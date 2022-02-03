@@ -2,6 +2,9 @@
 
 In this case the run1.sh talks me through getting haproxy up and running.
 
+run2.sh adds all repos and ubuntu packages to install kubernetes.
+ 
+
 init.sh is used to initialize the cluster on hte first (primary) master. Once that script has success it outputs what the commands are to 
 add additional nodes.
 
