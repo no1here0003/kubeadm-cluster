@@ -1,0 +1,24 @@
+######################################################################
+#
+# Delete everything after the default section up to this block
+######################################################################
+#---------------------------------------------------------------------
+# apiserver frontend which proxys to the masters
+#---------------------------------------------------------------------
+frontend apiserver
+    bind *:8443
+    mode tcp
+    option tcplog
+    default_backend apiserver
+#---------------------------------------------------------------------
+# round robin balancing for apiserver
+#---------------------------------------------------------------------
+backend apiserver
+    option httpchk GET /healthz
+    http-check expect status 200
+    mode tcp
+    option ssl-hello-chk
+    balance     roundrobin
+        server k8smaster-1 192.168.2.2:6443 check
+        server k8smaster-2 192.168.2.3:6443 check
+        server k8smaster-3 192.168.2.4:6443 check
