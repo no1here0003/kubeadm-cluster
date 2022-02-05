@@ -12,6 +12,6 @@ cat ~/.config/sops/age/keys.txt | kubectl -n flux-system create secret generic s
 flux bootstrap github \
   --owner=no1here0003 \
   --repository=kubeadm-cluster \
-  --branch=master \
+  --branch=main \
   --path=./cluster/base \
   --personal
