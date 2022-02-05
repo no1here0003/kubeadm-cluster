@@ -19,7 +19,7 @@ spec:
     - pathPrefix: "/etc/cni/net.d"
     - pathPrefix: "/etc/kube-flannel"
     - pathPrefix: "/run/flannel"
-      readOnlyRootFilesystem: false
+  readOnlyRootFilesystem: false
   # Users and groups
   runAsUser:
     rule: RunAsAny
