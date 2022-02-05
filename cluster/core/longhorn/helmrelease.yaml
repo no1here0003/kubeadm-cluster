@@ -59,6 +59,18 @@ spec:
       pullPolicy: IfNotPresent
 
 
+    defaultSettings:
+      defaultReplicaCount: 3
+      backupTarget:
+      createDefaultDiskLabeledNodes: true
+      storageOverProvisioningPercentage: 150
+      storageMinimalAvailablePercentage: 50
+      guaranteedEngineManagerCPU: 20
+      guaranteedReplicaManagerCPU: 20
+      defaultDataPath: /var/lib/longhorn
+      concurrentAutomaticEngineUpgradePerNodeLimit: 3
+      defaultLonghornStaticStorageClass: longhorn
+
     ingress:
       enabled: true
       ingressClassName: nginx

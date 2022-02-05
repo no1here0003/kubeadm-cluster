@@ -14,11 +14,15 @@ spec:
         name: flux-system
         namespace: flux-system
       interval: 5m
+
   values:
+
     image:
       repository: quay.io/minio/minio
-      tag: RELEASE.2021-12-09T06-19-41Z
+      tag: RELEASE.2022-02-05T04-40-59Z
+
     nameOverride: minio
+
     env:
       MINIO_PROMETHEUS_AUTH_TYPE: "public"
       MINIO_UPDATE: "off"
@@ -26,11 +30,13 @@ spec:
     envFrom:
       - secretRef:
           name: minio
+
     args:
       - server
       - /data
       - --console-address
       - :9001
+
     service:
       main:
         enabled: true
@@ -41,6 +47,7 @@ spec:
           api:
             enabled: true
             port: 9000
+
     ingress:
       main:
         enabled: true
@@ -62,6 +69,7 @@ spec:
           - hosts:
               - "minio.${INTERNAL_DOMAIN}"
               - "s3.${INTERNAL_DOMAIN}"
+
     persistence:
       config:
         enabled: true
@@ -71,8 +79,10 @@ spec:
             server: "${NAS3_ADDR}"
             path: /volume1/minio
         mountPath: /data
+
     podAnnotations:
       secret.reloader.stakater.com/reload: "minio"
+
     resources:
       requests:
         memory: 100Mi
