@@ -6,7 +6,7 @@
 # apiserver frontend which proxys to the masters
 #---------------------------------------------------------------------
 frontend apiserver
-    bind *:8443
+    bind *:6443
     mode tcp
     option tcplog
     default_backend apiserver
@@ -19,6 +19,6 @@ backend apiserver
     mode tcp
     option ssl-hello-chk
     balance     roundrobin
-        server k8smaster-1 192.168.2.2:6443 check
-        server k8smaster-2 192.168.2.3:6443 check
-        server k8smaster-3 192.168.2.4:6443 check
+        server k8s-master1 192.168.2.2:6443 check
+        server k8s-master2 192.168.2.3:6443 check
+        server k8s-master3 192.168.2.4:6443 check
