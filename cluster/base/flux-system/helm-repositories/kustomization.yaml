@@ -29,3 +29,4 @@ resources:
   - authelia-charts.yaml
   - onedev-charts.yaml
   - kubernetes-sigs-descheduler-charts.yaml
+  - kubernetes-sigs-metrics-server-charts.yaml
