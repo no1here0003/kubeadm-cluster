@@ -1,26 +1,27 @@
 #!/bin/sh
 # export HOSTNAME=""
 
+# run via sudo
+#
+# Set the hostname using the below command
+# hostnamectl set-hostname $HOSTNAME
 
-hostnamectl set-hostname $HOSTNAME
-
-sudo vi /etc/hosts
+vi /etc/hosts
 
 # Need to add a 192.168.2.10 entry to hosts file
-sudo apt-get update
-sudo apt-get install haproxy keepalived -y
+apt-get update
+apt-get install haproxy keepalived -y
 chmod +x check_apiserver.sh
-sudo cp check_apiserver.sh /etc/keepalived/
+cp check_apiserver.sh /etc/keepalived/
 # Create a backup
-sudo cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf-bak
+cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf-bak
 # truncate it
-sudo sh -c '> /etc/keepalived/keepalived.conf'
-sudo cat keepalived.conf2 >> /etc/keepalived/keepalived.conf
-sudo vi /etc/keepalived/keepalived.conf
+sh -c '> /etc/keepalived/keepalived.conf'
+cat keepalived.conf2 >> /etc/keepalived/keepalived.conf
+vi /etc/keepalived/keepalived.conf
 
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg-bak
+cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg-bak
 
-sudo cat haproxy.cfg2 >> /etc/haproxy/haproxy.cfg
+cat haproxy.cfg2 >> /etc/haproxy/haproxy.cfg
 
-sudo vi /etc/haproxy/haproxy.cfg
-
+vi /etc/haproxy/haproxy.cfg

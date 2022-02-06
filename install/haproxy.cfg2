@@ -19,6 +19,6 @@ backend apiserver
     mode tcp
     option ssl-hello-chk
     balance     roundrobin
-        server k8s-master1 192.168.2.2:6443 check
-        server k8s-master2 192.168.2.3:6443 check
-        server k8s-master3 192.168.2.4:6443 check
+        server k8s-master1 192.168.3.2:6443 check
+        server k8s-master2 192.168.2.133:6443 check
+        server k8s-master3 192.168.2.111:6443 check
