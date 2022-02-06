@@ -23,6 +23,5 @@ spec:
       tag: v0.6.0
 
     args:
-      - --secure-port=8443
-      - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+      - --kubelet-preferred-address-types=InternalIP
       - --kubelet-use-node-status-port
