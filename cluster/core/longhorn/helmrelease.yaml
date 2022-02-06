@@ -62,7 +62,9 @@ spec:
     defaultSettings:
       defaultReplicaCount: 3
       backupTarget: ${NFS_BACKUP}
-      createDefaultDiskLabeledNodes: false
+      # Below requires that nodes used for storage have the label
+      # node.longhorn.io/create-default-disk=true
+      createDefaultDiskLabeledNodes: true
       storageOverProvisioningPercentage: 150
       storageMinimalAvailablePercentage: 50
       guaranteedEngineManagerCPU: 20
