@@ -5,10 +5,12 @@ metadata:
   name: authentik
   namespace: security
 spec:
+  dependsOn:
+    - name: longhorn
+      namespace: longhorn-system
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.goauthentik.io
       chart: authentik
       version: 5.2.1
       sourceRef:

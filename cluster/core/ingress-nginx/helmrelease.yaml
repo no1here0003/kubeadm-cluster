@@ -5,6 +5,9 @@ metadata:
   name: ingress-nginx
   namespace: ingress-nginx
 spec:
+  dependsOn:
+    - name: metallb
+      namespace: metallb-system
   maxHistory: 3
   interval: 1m0s
   suspend: false
