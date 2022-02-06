@@ -6,10 +6,10 @@ resources:
   - metallb-system
   # - cert-manager
   - ingress-nginx
-  # - longhorn
+  - longhorn
   # - external-dns
-  # - k8s-dashboard
+  - k8s-dashboard
   # - system
-  # - authentik
+  - authentik
   # - hashicorp
   # - kube-system
