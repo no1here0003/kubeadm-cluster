@@ -28,3 +28,4 @@ resources:
   - weaveworks-kured.yaml
   - authelia-charts.yaml
   - onedev-charts.yaml
+  - kubernetes-sigs-descheduler-charts.yaml
