@@ -6,7 +6,7 @@ resources:
   # - gaming
   # - home
   # - media
-  # - monitoring
+  - monitoring
   # - networking
   # - rocketchat
   # - system
