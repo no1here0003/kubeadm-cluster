@@ -77,7 +77,7 @@ spec:
         volumeSpec:
           nfs:
             server: "${NAS3_ADDR}"
-            path: /volume1/minio
+            path: /volume1/minio2
         mountPath: /data
 
     podAnnotations:
