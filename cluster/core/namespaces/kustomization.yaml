@@ -12,7 +12,7 @@ resources:
   - media.yaml
   - metallb.yaml
   - monitoring.yaml
-  - networking.yaml
+  - network.yaml
   - rocketchat.yaml
   - security.yaml
   - tekton.yaml
