@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - dashboard
   - helmrelease.yaml
-namespace: networking
+namespace: network
 configMapGenerator:
   - name: blocky-whitelist
     files:
