@@ -5,5 +5,5 @@ resources:
   - reloader
   - net-pol
   - intel-gpu-plugin
-  - kured
-  - metrics-server
+  # - kured
+  # - metrics-server

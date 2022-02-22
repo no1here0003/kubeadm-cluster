@@ -11,8 +11,6 @@ vi /etc/hosts
 # Need to add a 192.168.2.10 entry to hosts file
 apt-get update
 apt-get install haproxy keepalived -y
-chmod +x check_apiserver.sh
-cp check_apiserver.sh /etc/keepalived/
 # Create a backup
 cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf-bak
 # truncate it
