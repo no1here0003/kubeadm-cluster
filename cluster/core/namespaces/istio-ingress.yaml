@@ -5,3 +5,4 @@ metadata:
   name: istio-ingress
   labels:
     ns: istio-ingress
+    istio-injection: enabled

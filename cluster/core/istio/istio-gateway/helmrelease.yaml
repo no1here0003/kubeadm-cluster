@@ -1,0 +1,59 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: istio-gateway
+  namespace: istio-ingress
+spec:
+  maxHistory: 3
+  interval: 1m0s
+  suspend: false
+  releaseName: istio-gateway
+  chart:
+    spec:
+      # renovate: registryUrl=https://istio-release.storage.googleapis.com/charts
+      chart: gateway
+      version: 1.14.0
+      sourceRef:
+        kind: HelmRepository
+        name: istio-charts
+        namespace: flux-system
+
+  values:
+    gateways:
+      istio-ingressgateway:
+        name: istio-ingressgateway
+        labels:
+          app: istio-ingressgateway
+          istio: ingressgateway
+        ports:
+        ## You can add custom gateway ports in user values overrides, but it must include those ports since helm replaces.
+        # Note that AWS ELB will by default perform health checks on the first port
+        # on this list. Setting this to the health check port will ensure that health
+        # checks always work. https://github.com/istio/istio/issues/12503
+          - port: 15021
+            targetPort: 15021
+            name: status-port
+            protocol: TCP
+          - port: 80
+            targetPort: 8080
+            name: http2
+            protocol: TCP
+          - port: 443
+            targetPort: 8443
+            name: https
+            protocol: TCP
+
+        serviceAnnotations:
+          metallb.universe.tf/loadBalancerIPs: ${SVC_INGRESS_ADDR}
+
+        type: LoadBalancer
+
+      global:
+        defaultConfigVisibilitySettings: ['*']
+
+        arch:
+          amd64: 2
+          s390x: 0
+          ppc64le: 0
+          arm64: 2
