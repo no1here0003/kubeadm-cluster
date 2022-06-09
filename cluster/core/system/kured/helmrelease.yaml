@@ -26,6 +26,7 @@ spec:
       timeZone: America/New_York
       startTime: 2am
       endTime: 5am
+      rebootCommand: "/usr/bin/systemctl reboot"
     #  notifyUrl: ${KURED_DISCORD_WEBHOOK_URL}
     metrics:
       create: true
