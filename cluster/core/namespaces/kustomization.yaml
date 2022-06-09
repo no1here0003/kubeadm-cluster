@@ -8,6 +8,7 @@ resources:
   - gaming.yaml
   - hashicorp.yaml
   - ingress-nginx.yaml
+  - istio-ingress.yaml
   - istio-system.yaml
   - longhorn.yaml
   - media.yaml
