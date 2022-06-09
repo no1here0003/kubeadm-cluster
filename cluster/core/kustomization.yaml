@@ -8,6 +8,7 @@ resources:
   # - ingress-nginx
   - longhorn
   - external-dns
+  - istio
   # - k8s-dashboard
   - system
   # - authentik
