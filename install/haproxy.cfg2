@@ -1,24 +1,15 @@
-######################################################################
-#
-# Delete everything after the default section up to this block
-######################################################################
-#---------------------------------------------------------------------
-# apiserver frontend which proxys to the masters
-#---------------------------------------------------------------------
-frontend apiserver
-    bind *:8443
+frontend kube-apiserver
+  bind *:8443
+  mode tcp
+  option tcplog
+  default_backend kube-apiserver
+
+backend kube-apiserver
     mode tcp
     option tcplog
-    default_backend apiserver
-#---------------------------------------------------------------------
-# round robin balancing for apiserver
-#---------------------------------------------------------------------
-backend apiserver
-    option httpchk GET /healthz
-    http-check expect status 200
-    mode tcp
-    option ssl-hello-chk
-    balance     roundrobin
-        server k8s-master1 192.168.3.2:6443 check fall 3 rise 2
-        server k8s-master2 192.168.3.3:6443 check fall 3 rise 2
-        server k8s-master3 192.168.3.4:6443 check fall 3 rise 2
+    option tcp-check
+    balance roundrobin
+    default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
+    server k8s-m1 192.168.2.2:6443 check # Replace the IP address with your own.
+    server k8s-m2 192.168.2.3:6443 check # Replace the IP address with your own.
+    server k8s-m3 192.168.2.4:6443 check # Replace the IP address with your own.

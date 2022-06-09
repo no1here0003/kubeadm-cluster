@@ -5,11 +5,11 @@ resources:
   - namespaces
   - metallb-system
   - cert-manager
-  - ingress-nginx
+  # - ingress-nginx
   - longhorn
   - external-dns
-  - k8s-dashboard
+  # - k8s-dashboard
   - system
   # - authentik
-  - hashicorp
+  # - hashicorp
   - kube-system

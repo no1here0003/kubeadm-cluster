@@ -1,27 +1,37 @@
-! /etc/keepalived/keepalived.conf
-! Configuration File for keepalived
 global_defs {
-    router_id LVS_DEVEL
+  notification_email {
+  }
+  router_id LVS_DEVEL
+  vrrp_skip_check_adv_addr
+  vrrp_garp_interval 0
+  vrrp_gna_interval 0
 }
-vrrp_script check_haproxy {
-    script "killall -0 haproxy" # check the haproxy process
-    interval 2 # every 2 seconds
-    weight 2 # add 2 points if OK
+vrrp_script chk_haproxy {
+  script "/usr/bin/killall -0 haproxy"
+  interval 2
+  weight 2
 }
+vrrp_instance haproxy-vip {
+  state MASTER
+  priority 101
+  interface eth0                       # Network card
+  virtual_router_id 60
+  advert_int 1
+  authentication {
+    auth_type PASS
+    auth_pass 1111
+  }
+  unicast_src_ip 192.168.2.2      # The IP address of this machine
+  unicast_peer {
+    192.168.2.3
+    192.168.2.4                         # The IP address of peer machines
+  }
 
-vrrp_instance VI_1 {
-    state MASTER
-    interface enp0s3
-    virtual_router_id 255
-    priority 255
-    authentication {
-        auth_type PASS
-        auth_pass P@##D321!
-    }
-    virtual_ipaddress {
-        192.168.2.5
-    }
-    track_script {
-        check_haproxy
-    }
+  virtual_ipaddress {
+    192.168.2.9/24                  # The VIP address
+  }
+
+  track_script {
+    chk_haproxy
+  }
 }
