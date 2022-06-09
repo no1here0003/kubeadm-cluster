@@ -47,7 +47,7 @@ spec:
         serviceAnnotations:
           metallb.universe.tf/loadBalancerIPs: ${SVC_INGRESS_ADDR}
 
-          type: LoadBalancer
+        type: LoadBalancer
 
     global:
       defaultConfigVisibilitySettings: ['*']
