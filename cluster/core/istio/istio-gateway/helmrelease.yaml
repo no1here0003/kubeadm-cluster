@@ -47,13 +47,13 @@ spec:
         serviceAnnotations:
           metallb.universe.tf/loadBalancerIPs: ${SVC_INGRESS_ADDR}
 
-        type: LoadBalancer
+          type: LoadBalancer
 
-      global:
-        defaultConfigVisibilitySettings: ['*']
+    global:
+      defaultConfigVisibilitySettings: ['*']
 
-        arch:
-          amd64: 2
-          s390x: 0
-          ppc64le: 0
-          arm64: 2
+      arch:
+        amd64: 2
+        s390x: 0
+        ppc64le: 0
+        arm64: 2
