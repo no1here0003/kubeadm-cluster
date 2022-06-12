@@ -78,7 +78,7 @@ spec:
       defaultLonghornStaticStorageClass: longhorn
 
     ingress:
-      enabled: false
+      enabled: enabled
       ingressClassName: nginx
       host: longhorn.${INTERNAL_DOMAIN}
       tls: false
