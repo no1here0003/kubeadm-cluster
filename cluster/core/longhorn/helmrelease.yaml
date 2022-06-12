@@ -6,8 +6,8 @@ metadata:
   namespace: longhorn-system
 spec:
   dependsOn:
-    - name: ingress-nginx
-      namespace: ingress-nginx
+    - name: istio-gateway
+      namespace: istio-ingress
   releaseName: longhorn
   interval: 5m
   chart:
