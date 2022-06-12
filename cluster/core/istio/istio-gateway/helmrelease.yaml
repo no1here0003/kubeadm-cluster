@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://istio-release.storage.googleapis.com/charts
-      chart: gateway
+      chart: gateways
       version: 1.14.1
       sourceRef:
         kind: HelmRepository
