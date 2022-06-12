@@ -18,6 +18,24 @@ spec:
   install:
     createNamespace: true
   values:
+    cni:
+      excludeNamespaces:
+        - istio-system
+        - kube-system
+
+      repair:
+        enabled: true
+        hub: ""
+        tag: ""
+
+        labelPods: true
+        deletePods: true
+
+        initContainerName: "istio-validation"
+
+        brokenPodLabelKey: "cni.istio.io/uninitialized"
+        brokenPodLabelValue: "true"
     global:
-      hub: gcr.io/istio-testing
-      tag: latest
+      # Experimental taint controller for further race condition mitigation
+      taint:
+        enabled: false
