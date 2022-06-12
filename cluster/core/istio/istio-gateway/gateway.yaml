@@ -2,10 +2,10 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: istio-gateway
+  name: istio-ingressgateway
 spec:
   selector:
-    istio: ingressgateway
+    app: istio-gateway
   servers:
     - hosts:
         - '*.${SECRET_DOMAIN'
