@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://istio-release.storage.googleapis.com/charts
-      chart: istio-ingress
+      chart: gateway
       version: 1.14.1
       sourceRef:
         kind: HelmRepository
@@ -23,11 +23,10 @@ spec:
         namespace: flux-system
 
   values:
-
-    gateways:
-      istio-ingressgateway:
-        serviceAnnotations:
-          metallb.universe.tf/loadBalancerIPs: ${SVC_INGRESS_ADDR}
+    service:
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: ${SVC_INGRESS_ADDR}
 
     #     type: LoadBalancer
 
